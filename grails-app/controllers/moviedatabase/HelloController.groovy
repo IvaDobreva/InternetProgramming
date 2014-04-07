@@ -2,5 +2,10 @@ package moviedatabase
 
 class HelloController {
 
-    def index() { }
+    def index() {
+        render "annyong"
+    }
 }
+
+
+
