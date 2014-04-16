@@ -1,7 +1,5 @@
 package moviedatabase
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -34,7 +32,8 @@ class MoviesController {
             respond moviesInstance.errors, view:'create'
             return
         }
-
+	
+	moviesInstance.cover = request.getFile('cover')
         moviesInstance.save flush:true
 
         request.withFormat {

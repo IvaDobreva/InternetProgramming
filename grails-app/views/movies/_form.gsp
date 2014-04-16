@@ -38,25 +38,14 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'cover', 'error')} ">
-	<label for="cover">
-	<!--
-		<g:message code="movies.cover.label" default="Cover" />
-	-->
-
-		<input type="file" name="coverImage" />	
-	</label>
-	
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'coverImage', 'error')} required">
 	<label for="coverImage">
 		<g:message code="movies.coverImage.label" default="Cover Image" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="coverImage" name="coverImage.id" from="${com.lucastex.grails.fileuploader.UFile.list()}" optionKey="id" required="" value="${moviesInstance?.coverImage?.id}" class="many-to-one"/>
-
+	<!--<g:select id="coverImage" name="coverImage.id" from="${com.lucastex.grails.fileuploader.UFile.list()}" optionKey="id" required="" value="${moviesInstance?.coverImage?.id}" class="many-to-one"/>
+-->
+	<input type="file" name="coverImage.id"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'premiere', 'error')} required">
