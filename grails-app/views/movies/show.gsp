@@ -23,6 +23,24 @@
 			</g:if>
 			<ol class="property-list movies">
 			
+				<g:if test="${moviesInstance?.title}">
+				<li class="fieldcontain">
+					<span id="title-label" class="property-label"><g:message code="movies.title.label" default="Title" /></span>
+					
+						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${moviesInstance}" field="title"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${moviesInstance?.producer}">
+				<li class="fieldcontain">
+					<span id="producer-label" class="property-label"><g:message code="movies.producer.label" default="Producer" /></span>
+					
+						<span class="property-value" aria-labelledby="producer-label"><g:fieldValue bean="${moviesInstance}" field="producer"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${moviesInstance?.actors}">
 				<li class="fieldcontain">
 					<span id="actors-label" class="property-label"><g:message code="movies.actors.label" default="Actors" /></span>
@@ -41,29 +59,29 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${moviesInstance?.cover}">
+				<li class="fieldcontain">
+					<span id="cover-label" class="property-label"><g:message code="movies.cover.label" default="Cover" /></span>
+					
+						<span class="property-value" aria-labelledby="cover-label"><g:fieldValue bean="${moviesInstance}" field="cover"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${moviesInstance?.coverImage}">
+				<li class="fieldcontain">
+					<span id="coverImage-label" class="property-label"><g:message code="movies.coverImage.label" default="Cover Image" /></span>
+					
+						<span class="property-value" aria-labelledby="coverImage-label"><g:link controller="UFile" action="show" id="${moviesInstance?.coverImage?.id}">${moviesInstance?.coverImage?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${moviesInstance?.premiere}">
 				<li class="fieldcontain">
 					<span id="premiere-label" class="property-label"><g:message code="movies.premiere.label" default="Premiere" /></span>
 					
 						<span class="property-value" aria-labelledby="premiere-label"><g:formatDate date="${moviesInstance?.premiere}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${moviesInstance?.producer}">
-				<li class="fieldcontain">
-					<span id="producer-label" class="property-label"><g:message code="movies.producer.label" default="Producer" /></span>
-					
-						<span class="property-value" aria-labelledby="producer-label"><g:fieldValue bean="${moviesInstance}" field="producer"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${moviesInstance?.title}">
-				<li class="fieldcontain">
-					<span id="title-label" class="property-label"><g:message code="movies.title.label" default="Title" /></span>
-					
-						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${moviesInstance}" field="title"/></span>
 					
 				</li>
 				</g:if>

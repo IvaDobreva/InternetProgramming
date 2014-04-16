@@ -24,15 +24,17 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="title" title="${message(code: 'movies.title.label', default: 'Title')}" />
+					
+						<g:sortableColumn property="producer" title="${message(code: 'movies.producer.label', default: 'Producer')}" />
+					
 						<g:sortableColumn property="actors" title="${message(code: 'movies.actors.label', default: 'Actors')}" />
 					
 						<g:sortableColumn property="description" title="${message(code: 'movies.description.label', default: 'Description')}" />
 					
-						<g:sortableColumn property="premiere" title="${message(code: 'movies.premiere.label', default: 'Premiere')}" />
+						<g:sortableColumn property="cover" title="${message(code: 'movies.cover.label', default: 'Cover')}" />
 					
-						<g:sortableColumn property="producer" title="${message(code: 'movies.producer.label', default: 'Producer')}" />
-					
-						<g:sortableColumn property="title" title="${message(code: 'movies.title.label', default: 'Title')}" />
+						<th><g:message code="movies.coverImage.label" default="Cover Image" /></th>
 					
 					</tr>
 				</thead>
@@ -40,15 +42,17 @@
 				<g:each in="${moviesInstanceList}" status="i" var="moviesInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${moviesInstance.id}">${fieldValue(bean: moviesInstance, field: "actors")}</g:link></td>
-					
-						<td>${fieldValue(bean: moviesInstance, field: "description")}</td>
-					
-						<td><g:formatDate date="${moviesInstance.premiere}" /></td>
+						<td><g:link action="show" id="${moviesInstance.id}">${fieldValue(bean: moviesInstance, field: "title")}</g:link></td>
 					
 						<td>${fieldValue(bean: moviesInstance, field: "producer")}</td>
 					
-						<td>${fieldValue(bean: moviesInstance, field: "title")}</td>
+						<td>${fieldValue(bean: moviesInstance, field: "actors")}</td>
+					
+						<td>${fieldValue(bean: moviesInstance, field: "description")}</td>
+					
+						<td>${fieldValue(bean: moviesInstance, field: "cover")}</td>
+					
+						<td>${fieldValue(bean: moviesInstance, field: "coverImage")}</td>
 					
 					</tr>
 				</g:each>

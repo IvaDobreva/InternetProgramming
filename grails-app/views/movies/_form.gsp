@@ -2,21 +2,60 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'actors', 'error')} ">
-	<label for="actors">
-		<g:message code="movies.actors.label" default="Actors" />
-		
+<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'title', 'error')} required">
+	<label for="title">
+		<g:message code="movies.title.label" default="Title" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="actors" value="${moviesInstance?.actors}"/>
+	<g:textField name="title" required="" value="${moviesInstance?.title}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'description', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'producer', 'error')} required">
+	<label for="producer">
+		<g:message code="movies.producer.label" default="Producer" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="producer" required="" value="${moviesInstance?.producer}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'actors', 'error')} required">
+	<label for="actors">
+		<g:message code="movies.actors.label" default="Actors" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="actors" required="" value="${moviesInstance?.actors}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'description', 'error')} required">
 	<label for="description">
 		<g:message code="movies.description.label" default="Description" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="description" value="${moviesInstance?.description}"/>
+	<g:textField name="description" required="" value="${moviesInstance?.description}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'cover', 'error')} ">
+	<label for="cover">
+	<!--
+		<g:message code="movies.cover.label" default="Cover" />
+	-->
+
+		<input type="file" name="coverImage" />	
+	</label>
+	
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'coverImage', 'error')} required">
+	<label for="coverImage">
+		<g:message code="movies.coverImage.label" default="Cover Image" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="coverImage" name="coverImage.id" from="${com.lucastex.grails.fileuploader.UFile.list()}" optionKey="id" required="" value="${moviesInstance?.coverImage?.id}" class="many-to-one"/>
 
 </div>
 
@@ -26,24 +65,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:datePicker name="premiere" precision="day"  value="${moviesInstance?.premiere}"  />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'producer', 'error')} ">
-	<label for="producer">
-		<g:message code="movies.producer.label" default="Producer" />
-		
-	</label>
-	<g:textField name="producer" value="${moviesInstance?.producer}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'title', 'error')} ">
-	<label for="title">
-		<g:message code="movies.title.label" default="Title" />
-		
-	</label>
-	<g:textField name="title" value="${moviesInstance?.title}"/>
 
 </div>
 
