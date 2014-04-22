@@ -43,9 +43,7 @@
 		<g:message code="movies.coverImage.label" default="Cover Image" />
 		<span class="required-indicator">*</span>
 	</label>
-	<!--<g:select id="coverImage" name="coverImage.id" from="${com.lucastex.grails.fileuploader.UFile.list()}" optionKey="id" required="" value="${moviesInstance?.coverImage?.id}" class="many-to-one"/>
--->
-	<input type="file" name="coverImage.id"/>
+	<input type="file" name="coverImage"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'premiere', 'error')} required">

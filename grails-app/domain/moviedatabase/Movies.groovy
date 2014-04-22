@@ -7,10 +7,14 @@ class Movies {
     String actors;
     String description;
     String coverImage;
-    static constraints = {
+	String coverImagePath;
+    
+	static constraints = {
    		title(blank:false)
 		producer(blank:false)
  		actors(blank: false)
 		description(blank:false)
+		coverImage(blank:false, nullable:true)
+		coverImagePath(blank:false, nullable:true)
 	}
 }

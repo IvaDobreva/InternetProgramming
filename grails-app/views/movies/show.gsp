@@ -59,24 +59,19 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${moviesInstance?.cover}">
-				<li class="fieldcontain">
-					<span id="cover-label" class="property-label"><g:message code="movies.cover.label" default="Cover" /></span>
-					
-						<span class="property-value" aria-labelledby="cover-label"><g:fieldValue bean="${moviesInstance}" field="cover"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${moviesInstance?.coverImage}">
 				<li class="fieldcontain">
-					<span id="coverImage-label" class="property-label"><g:message code="movies.coverImage.label" default="Cover Image" /></span>
+					<span id="cover-label" class="property-label"><g:message code="movies.coverImage.label" default="Cover" /></span>
 					
-						<span class="property-value" aria-labelledby="coverImage-label"><g:link controller="UFile" action="show" id="${moviesInstance?.coverImage?.id}">${moviesInstance?.coverImage?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="cover-label"><g:fieldValue bean="${moviesInstance}" field="coverImage"/></span>
 					
 				</li>
 				</g:if>
-			
+				<g:if test="${moviesInstance?.coverImage}">
+					<li class="fieldcontain">
+						 <img src="${resource(dir: 'images/covers', file: moviesInstance.coverImage)}" alt="Grails"/>
+					</li>
+				</g:if>
 				<g:if test="${moviesInstance?.premiere}">
 				<li class="fieldcontain">
 					<span id="premiere-label" class="property-label"><g:message code="movies.premiere.label" default="Premiere" /></span>

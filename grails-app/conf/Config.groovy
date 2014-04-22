@@ -92,10 +92,12 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+	uploadFolder = "~/MovieDatabase/grails-app/upload/"
     }
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
+	uploadFolder = "~/MovieDatabase/grails-app/upload/"
     }
 }
 
@@ -120,10 +122,3 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 
-fileuploader {
-	cover {
-		maxSize = 1024 * 256 //256 kbytes
-		allowedExtensions = ["jpg","jpeg","gif","png"]
-		path = "/tmp/avatar/"
-	}
-}

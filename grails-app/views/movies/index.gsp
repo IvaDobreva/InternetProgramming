@@ -32,9 +32,6 @@
 					
 						<g:sortableColumn property="description" title="${message(code: 'movies.description.label', default: 'Description')}" />
 					
-						<g:sortableColumn property="cover" title="${message(code: 'movies.cover.label', default: 'Cover')}" />
-					
-						<th><g:message code="movies.coverImage.label" default="Cover Image" /></th>
 					
 					</tr>
 				</thead>
@@ -49,10 +46,6 @@
 						<td>${fieldValue(bean: moviesInstance, field: "actors")}</td>
 					
 						<td>${fieldValue(bean: moviesInstance, field: "description")}</td>
-					
-						<td>${fieldValue(bean: moviesInstance, field: "cover")}</td>
-					
-						<td>${fieldValue(bean: moviesInstance, field: "coverImage")}</td>
 					
 					</tr>
 				</g:each>
