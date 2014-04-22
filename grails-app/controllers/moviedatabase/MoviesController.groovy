@@ -32,7 +32,9 @@ class MoviesController {
 		if(coverFile.empty) {
 			println "EMPTY FILE"	//do something for empty file
 		} else {
-			moviesInstance.coverImage = coverFile.originalFileName //Saves filename
+			moviesInstance.coverImage = coverFile.getOriginalFilename() //Saves filename
+			
+			
 			def appDir = servletContext.getRealPath("/")	//Finds web-app path
 			moviesInstance.coverImagePath = appDir + "images/covers/"  + moviesInstance.coverImage	//Creates path where it can save images
 			//println moviesInstance.coverImagePath
