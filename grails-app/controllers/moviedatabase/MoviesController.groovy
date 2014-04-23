@@ -1,12 +1,13 @@
 package moviedatabase
 
 import static org.springframework.http.HttpStatus.*
+import org.springframework.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class MoviesController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    //static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -27,13 +28,13 @@ class MoviesController {
             notFound()
             return
         }
-
+		println "loiuehgriushuishweiu"
 		def coverFile = request.getFile('coverImage')
 		if(coverFile.empty) {
 			println "EMPTY FILE"	//do something for empty file
 		} else {
-			moviesInstance.coverImage = coverFile.getOriginalFilename() //Saves filename
-			
+			//String fileName = coverFile.getOriginalFilename()
+			moviesInstance.coverImage = coverFile.getOriginalFilename()//fileName //Saves filename
 			
 			def appDir = servletContext.getRealPath("/")	//Finds web-app path
 			moviesInstance.coverImagePath = appDir + "images/covers/"  + moviesInstance.coverImage	//Creates path where it can save images
@@ -46,12 +47,12 @@ class MoviesController {
 			}
 		}
         request.withFormat {
-			def params = [:] 
+		/*	def params = [:] 
 			def values //title:seoifs // "title":"ssegs"
 			for(v in moviesInstance.properties) {
 				values = v.toString().tokenize(':')
 				params.put(values[0], values[1])			
-			}
+			}*/
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'moviesInstance.label', default: 'Movies'), moviesInstance.id])
 				redirect moviesInstance
@@ -70,13 +71,32 @@ class MoviesController {
             notFound()
             return
         }
-
+		def editFile = request.getFile('coverImage') 
+		if(!editFile.empty()) {
+			moviesInstance.coverImage = editFile.getOriginalFilename()
+			def appDir = servletContext.getRealPath('/')
+			moviesInstance.coverImagePath = 
+		}
+	//	println "kejfhekufheiufeiuh"
         if (moviesInstance.hasErrors()) {
             respond moviesInstance.errors, view:'edit'
             return
         }
 
-        moviesInstance.save flush:true
+		println "esfsefefesfeffee"
+	//	def editFile = request.getFile('coverImage')
+		println moviesInstance.coverImage
+		//ef cover = request.getFile('coverImage')	
+		if(!editFile.empty()) {
+		//	new File(moviesInstance.coverImagePath).delete()
+
+		//	moviesInstance.coverImage = editFile.getOriginalFilename()
+		/*
+			def appDir = servletContext.getRealPath("/")
+			moviesInstance.coverImagePath = appDir + "images/covers/"
+			editFile.transferTo(new File(new File(appDir ), editFile.getOriginalFilename()));*/
+		}
+		moviesInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
