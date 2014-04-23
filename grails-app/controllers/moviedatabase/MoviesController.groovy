@@ -72,10 +72,10 @@ class MoviesController {
             return
         }
 		def editFile = request.getFile('coverImage') 
-		if(!editFile.empty()) {
+		if(!editFile.isEmpty()) {
 			moviesInstance.coverImage = editFile.getOriginalFilename()
 			def appDir = servletContext.getRealPath('/')
-			moviesInstance.coverImagePath = 
+			//moviesInstance.coverImagePath = 
 		}
 	//	println "kejfhekufheiufeiuh"
         if (moviesInstance.hasErrors()) {
