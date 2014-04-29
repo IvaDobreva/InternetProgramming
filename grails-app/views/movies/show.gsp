@@ -58,18 +58,9 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${moviesInstance?.coverImage}">
-				<li class="fieldcontain">
-					<span id="cover-label" class="property-label"><g:message code="movies.coverImage.label" default="Cover" /></span>
-					
-						<span class="property-value" aria-labelledby="cover-label"><g:fieldValue bean="${moviesInstance}" field="coverImage"/></span>
-					
-				</li>
-				</g:if>
-				<g:if test="${moviesInstance?.coverImage}">
+				<g:if test="${moviesInstance?.coverImagePath}">
 					<li class="fieldcontain">
-						 <img src="${resource(dir: 'images/covers', file: moviesInstance.coverImage)}" alt="Grails"/>
+						 <img src="${resource(dir: 'images/covers', file: moviesInstance.coverImagePath)}" alt="Grails"/>
 					</li>
 				</g:if>
 				<g:if test="${moviesInstance?.premiere}">
