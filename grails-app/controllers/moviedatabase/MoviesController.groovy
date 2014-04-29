@@ -50,10 +50,23 @@ class MoviesController {
     @Transactional
     def update(Movies moviesInstance) {
       if (moviesInstance == null) {
-          notFound()
-          return
+        notFound()
+        return
       }
-      //TODO: Do this thing
+
+      def f = request.getFile('coverImage')
+      if(!f.isEmpty()) {
+        moviesInstance.coverImagePath = f.getOriginalFilename()
+        moviesInstance.save(flush: true)
+        f.transferTo(new File(servletContext.getRealPath("/") + "/images/covers/" + moviesInstance.coverImagePath))
+      } else {
+        flash.message = 'file cannot be empty'
+        render(view: 'create')
+        return
+      }
+
+      moviesInstance.save flush:true
+      redirect(action: "index")
     }
 
     @Transactional
