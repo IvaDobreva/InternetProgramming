@@ -19,10 +19,10 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="logo" role="banner"><img src="${resource(dir: 'images', file: 'logo.png')}" alt=""/></a></div>
+		<div id="logo"><img src="${resource(dir: 'images', file: 'logo.png')}" alt=""/></a></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+		
 		<r:layoutResources />
 	</body>
 </html>
