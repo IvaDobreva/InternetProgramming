@@ -25,7 +25,7 @@ p a:hover {
 }
 /*------------------------- Header ---------------------------*/
 #header {
-	background:url(resource:/images/bg-header.png) repeat-x;
+	background:url(../images/bg-header.png) repeat-x;
 	height:184px;
 	margin:15px 0 0;
 }
