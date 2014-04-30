@@ -4,6 +4,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+  <meta name="layout" content="main">
+		<g:set var="entityName" value="${message(code: 'movies.label', default: 'Movies')}" />
 	<title>Movies - Cinema Theater Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
   
@@ -51,7 +53,12 @@
 					
 				</g:if>
     </h2>
-		<img src="images/baby-with-dog3.jpg" alt="">
+					
+			
+						 <img src="${resource(dir:'images/covers/', file: moviesInstance.fileName)}" alt=""/>
+				
+
+	
 		<div>
 			<h3>Synopsis</h3>
 			<p>
