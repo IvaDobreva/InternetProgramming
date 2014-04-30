@@ -15,31 +15,14 @@
 			<a href="index.html" id="logo"><img src="images/logo.png" alt=""></a>
 			<ul>
 				<li>
-					<a href="index.html">Home</a>
+					<a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a>
 				</li>
 				<li class="selected">
-					<a href="movies.html">Movies</a>
-					<ul>
-						<li class="selected">
-							<a href="#">Now Showing</a>
-						</li>
-						<li>
-							<a href="#">Comming Soon</a>
-						</li>
-					</ul>
+					<g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
 				</li>
 				<li>
-					<a href="ticket-info.html">Ticket Info</a>
-				</li>
-				<li>
-					<a href="rentals.html">Rentals</a>
-				</li>
-				<li>
-					<a href="about.html">About</a>
-				</li>
-				<li>
-					<a href="blog.html">Blog</a>
-				</li>
+          <g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+        </li>
 			</ul>
 		</div>
 	</div>
