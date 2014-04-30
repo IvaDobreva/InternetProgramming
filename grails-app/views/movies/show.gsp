@@ -4,8 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-  <meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'movies.label', default: 'Movies')}" />
+  
 	<title>Movies - Cinema Theater Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
   
@@ -54,15 +53,15 @@
 				</g:if>
     </h2>
 					
-			
-						 <img src="${resource(dir:'images/covers/', file: moviesInstance.fileName)}" alt=""/>
-				
-
-	
+    <img src="${resource(dir:'images/covers/', file: moviesInstance.fileName)}" alt=""/>
+      
 		<div>
 			<h3>Synopsis</h3>
 			<p>
-				This website template has been designed by <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a> for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us. If you're having problems editing this website template, then don't hesitate to ask for help on the <a href="http://www.freewebsitetemplates.com/forums/">Forums</a>.
+				<g:if test="${moviesInstance?.description}">
+					
+          <span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${moviesInstance}" field="description"/></span>
+				</g:if>
 			</p>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ornare turpis, tempor iaculis velit gravida ut. Fusce lobortis justo non elit volutpat eu euismod odio adipiscing. Pellentesque pharetra justo in tortor fringilla ac sodales tellus viverra. Fusce eu erat turpis, et sodales metus. Vestibulum neque quam, lobortis in pretium sed, varius ut purus. Donec turpis purus, lacinia a tincidunt nec, sodales convallis orci.
