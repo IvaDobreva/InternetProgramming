@@ -4,9 +4,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-  
-	<title>Movies - Cinema Theater Website Template</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css">
+  <meta name="layout" content="show">
+  <g:set var="entityName" value="${message(code: 'movies.label', default: 'Movies')}" />
+	<title>Movies</title>
   
 </head>
 <body>
@@ -30,7 +30,6 @@
 		<h2>
       <g:if test="${moviesInstance?.title}">
 				
-					<span id="title-label" class="property-label"><g:message code="movies.title.label" default="Title" /></span>
           <span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${moviesInstance}" field="title"/></span>
 					
 				</g:if>
@@ -46,28 +45,36 @@
           <span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${moviesInstance}" field="description"/></span>
 				</g:if>
 			</p>
+      <!--
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ornare turpis, tempor iaculis velit gravida ut. Fusce lobortis justo non elit volutpat eu euismod odio adipiscing. Pellentesque pharetra justo in tortor fringilla ac sodales tellus viverra. Fusce eu erat turpis, et sodales metus. Vestibulum neque quam, lobortis in pretium sed, varius ut purus. Donec turpis purus, lacinia a tincidunt nec, sodales convallis orci.
 			</p>
+-->
 		</div>
 		<div class="section">
 			<h3>Details</h3>
+    <!-- Missing for now
 			<span>Drama, Adventure</span>
+-->
 			<p>
-				<span>Starring:</span> Janet S. Foster, Alexander S. Irwin, Rosendo P. Fowler,
+				<span>Starring:</span> <span class="property-value" aria-labelledby="actors-label"><g:fieldValue bean="${moviesInstance}" field="actors"/></span>
 			</p>
 			<p>
-				<span>Directed By:</span> Barbara J. Hernandez
+				<span>Directed By:</span> <span class="property-value" aria-labelledby="producer-label"><g:fieldValue bean="${moviesInstance}" field="producer"/></span>
 			</p>
+<!-- screenplay
 			<p>
 				<span>Screenplay By:</span> Melissa J. Soper
 			</p>
+-->
 			<p>
 				<span>Runs For:</span> 120 minutes
 			</p>
-			<p>
-				<span>Showtimes:</span> 11:30     1:30     3:30     5:30     7:30     10:30
-			</p>
+
+      <p> 
+        <span>Premiere:</span> <span class="property-value" aria-labelledby="premiere-label"><g:formatDate date="${moviesInstance?.premiere}" /></span>
+      </p>
+			
 		</div>
 	</div>
 	<div id="footer">
