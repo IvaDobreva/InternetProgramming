@@ -28,34 +28,30 @@ class MoviesController {
             notFound()
             return
         }
-		println "loiuehgriushuishweiu"
-		def coverFile = request.getFile('coverImage')
+		
+		def  coverFile = request.getFile('coverImage')
 		if(coverFile.empty) {
 			println "EMPTY FILE"	//do something for empty file
 		} else {
-			//String fileName = coverFile.getOriginalFilename()
-			moviesInstance.coverImage = coverFile.getOriginalFilename()//fileName //Saves filename
-			
-			def appDir = servletContext.getRealPath("/")	//Finds web-app path
-			moviesInstance.coverImagePath = appDir + "images/covers/"  + moviesInstance.coverImage	//Creates path where it can save images
-			//println moviesInstance.coverImagePath
+	
+			//moviesInstance.coverImage = 'someFile'//coverFile.getOriginalFilename()//fileName //Saves filename
+			moviesInstance.fileName = moviesInstance.title//coverFile.getOriginalFilename()
+			//def appDir = servletContext.getRealPath("/")	//Finds web-app path
+			moviesInstance.coverImagePath = servletContext.getRealPath('/') + 'images/covers/' + moviesInstance.title	//Creates path where it can save images
 			coverFile.transferTo(new File(moviesInstance.coverImagePath))	//Transfer file to the app 
 		} 
+
 		if (!moviesInstance.save(flush: true)) {
 			moviesInstance.errors.each {
 				println it
 			}
 		}
         request.withFormat {
-		/*	def params = [:] 
-			def values //title:seoifs // "title":"ssegs"
-			for(v in moviesInstance.properties) {
-				values = v.toString().tokenize(':')
-				params.put(values[0], values[1])			
-			}*/
+
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'moviesInstance.label', default: 'Movies'), moviesInstance.id])
 				redirect moviesInstance
+				
             }
             '*' { respond moviesInstance, [status: CREATED] }
         }
@@ -71,31 +67,23 @@ class MoviesController {
             notFound()
             return
         }
+	
 		def editFile = request.getFile('coverImage') 
+	
 		if(!editFile.isEmpty()) {
-			moviesInstance.coverImage = editFile.getOriginalFilename()
-			def appDir = servletContext.getRealPath('/')
-			//moviesInstance.coverImagePath = 
+		
+			moviesInstance.fileName = editFile.getOriginalFilename() //editFile.getOriginalFilename()
+			moviesInstance.coverImagePath =   servletContext.getRealPath('/') + 'images/covers/' + moviesInstance.title
+			editFile.transferTo(new File(moviesInstance.coverImagePath) )
 		}
-	//	println "kejfhekufheiufeiuh"
+	
         if (moviesInstance.hasErrors()) {
             respond moviesInstance.errors, view:'edit'
+			println moviesInstance.errors
             return
         }
 
-		println "esfsefefesfeffee"
-	//	def editFile = request.getFile('coverImage')
-		println moviesInstance.coverImage
-		//ef cover = request.getFile('coverImage')	
-		if(!editFile.empty()) {
-		//	new File(moviesInstance.coverImagePath).delete()
-
-		//	moviesInstance.coverImage = editFile.getOriginalFilename()
-		/*
-			def appDir = servletContext.getRealPath("/")
-			moviesInstance.coverImagePath = appDir + "images/covers/"
-			editFile.transferTo(new File(new File(appDir ), editFile.getOriginalFilename()));*/
-		}
+		
 		moviesInstance.save flush:true
 
         request.withFormat {
