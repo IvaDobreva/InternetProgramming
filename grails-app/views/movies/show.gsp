@@ -5,6 +5,7 @@
 <head>
 	<meta charset="UTF-8">
   <meta name="layout" content="show">
+ 
   <g:set var="entityName" value="${message(code: 'movies.label', default: 'Movies')}" />
 	<title>Movies</title>
   
@@ -12,27 +13,23 @@
 <body>
 	<div id="header">
 		<div>
-			<a href="index.html" id="logo"><img src="images/logo.png" alt=""></a>
-			<ul>
+			<a href="${createLink(uri: '/movies/index')}" id="logo"><img src="${resource(dir: 'images', file: 'logo.png')}" alt=""/></a>
+			<ul class ="menu">
 				<li>
-					<a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a>
+					<a class="home" href="${createLink(uri: '/movies/index')}"><g:message code="default.home.label"/></a>
 				</li>
-				<li class="selected">
+				<li>
 					<g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
 				</li>
 				<li>
-          <g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+          
         </li>
 			</ul>
 		</div>
 	</div>
 	<div id="body" class="movies">
-		<h2>
-      <g:if test="${moviesInstance?.title}">
-				
-          <span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${moviesInstance}" field="title"/></span>
-					
-				</g:if>
+		<h2>				
+        <g:fieldValue bean="${moviesInstance}" field="title"/>
     </h2>
 					
     <img src="${resource(dir:'images/covers/', file: moviesInstance.fileName)}" alt=""/>
@@ -40,10 +37,9 @@
 		<div>
 			<h3>Synopsis</h3>
 			<p>
-				<g:if test="${moviesInstance?.description}">
 					
-          <span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${moviesInstance}" field="description"/></span>
-				</g:if>
+        <g:fieldValue bean="${moviesInstance}" field="description"/>
+	
 			</p>
       <!--
 			<p>
@@ -57,10 +53,10 @@
 			<span>Drama, Adventure</span>
 -->
 			<p>
-				<span>Starring:</span> <span class="property-value" aria-labelledby="actors-label"><g:fieldValue bean="${moviesInstance}" field="actors"/></span>
+				<span>Starring:</span> <g:fieldValue bean="${moviesInstance}" field="actors"/>
 			</p>
 			<p>
-				<span>Directed By:</span> <span class="property-value" aria-labelledby="producer-label"><g:fieldValue bean="${moviesInstance}" field="producer"/></span>
+				<span>Directed By:</span> <g:fieldValue bean="${moviesInstance}" field="producer"/>
 			</p>
 <!-- screenplay
 			<p>
@@ -72,7 +68,7 @@
 			</p>
 
       <p> 
-        <span>Premiere:</span> <span class="property-value" aria-labelledby="premiere-label"><g:formatDate date="${moviesInstance?.premiere}" /></span>
+        <span>Premiere:</span> <g:formatDate date="${moviesInstance?.premiere}" />
       </p>
 			
 		</div>
@@ -82,68 +78,28 @@
 			<div>
 				<span>Quick Links</span>
 				<ul>
+          <li>
+            <a class="home" href="${createLink(uri: '/movies/index')}"><g:message code="default.home.label"/></a>
+          </li>
 					<li>
-						<a href="index.html">Home</a>
+            <g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
 					</li>
 					<li>
-						<a href="ticket-info.html">Ticket Info</a>
+						<g:link class="edit" action="edit" resource="${moviesInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					</li>
+
 					<li>
-						<a href="#">Location</a>
-					</li>
-					<li>
-						<a href="movies.html">Now Showing</a>
-					</li>
-					<li>
-						<a href="rentals.html">Rentals</a>
-					</li>
-					<li>
-						<a href="about.html">Contact</a>
-					</li>
-					<li>
-						<a href="movies.html">Comming Soon</a>
-					</li>
-					<li>
-						<a href="about.html">The Company</a>
-					</li>
-					<li>
-						<a href="blog.html">Blog</a>
-					</li>
+						<g:form url="[resource:moviesInstance, action:'delete']" method="DELETE" style="">
+            <g:actionSubmit action="delete" value="Delete" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+
+            </g:form>
+          </li>
 				</ul>
-			</div>
-			<div class="section">
-				<span>Recent Tweets</span>
-				<ul>
-					<li>
-						<p>
-							Sed id mattis tellus. Proin egestas velit vel neque placerat sed interdum neque porta.
-						</p>
-						<span><a href="#">- 1 day ago</a></span>
-					</li>
-					<li>
-						<p>
-							Praesent at urna ac urna congue convallis.
-						</p>
-						<span><a href="#">- 2 day ago</a></span>
-					</li>
-				</ul>
-			</div>
-			<div>
-				<span>Sign Up For Our Mailing List</span>
-				<p>
-					Praesent at urna ac urna congue convallis. Maecenas sed placerat turpis. Duis in dolor ut nibh molestie faucibus.
-				</p>
-				<form action="index.html">
-					<input type="text" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Enter Email Address Here':this.value;" value="Enter Email Address Here">
-					<input type="submit" value="">
-				</form>
 			</div>
 			<p>
-				&#169; 2023 Cinema Theatre
+			
 			</p>
-			<div class="connect">
-				<span>Stay Connected:</span> <a href="http://freewebsitetemplates.com/go/facebook/" id="facebook">facebook</a> <a href="http://freewebsitetemplates.com/go/twitter/" id="twitter">twitter</a> <a href="http://freewebsitetemplates.com/go/googleplus/" id="googleplus">google+</a>
-			</div>
+			
 		</div>
 	</div>
 </body>

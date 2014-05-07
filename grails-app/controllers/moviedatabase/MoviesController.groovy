@@ -32,6 +32,7 @@ class MoviesController {
 		def  coverFile = request.getFile('coverImage')
 		if(coverFile.empty) {
 			println "EMPTY FILE"	//do something for empty file
+			println ':P'
 		} else {
 	
 			//moviesInstance.coverImage = 'someFile'//coverFile.getOriginalFilename()//fileName //Saves filename
@@ -109,6 +110,7 @@ class MoviesController {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Movies.label', default: 'Movies'), moviesInstance.id])
                 redirect action:"index", method:"GET"
+				//redirect moviesInstance
             }
             '*'{ render status: NO_CONTENT }
         }

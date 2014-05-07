@@ -1,7 +1,5 @@
 <%@ page import="moviedatabase.Movies" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: moviesInstance, field: 'title', 'error')} required">
 	<label for="title">
 		<g:message code="movies.title.label" default="Title" />

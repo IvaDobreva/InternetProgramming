@@ -2,9 +2,11 @@
 /*------------------------- Fonts ---------------------------*/
 @font-face {
 	font-family: 'oswaldregular';
-	src: url('resource:/fonts/oswald-webfont.eot');
-	src: url('resource:/fonts/oswald-webfont.eot?#iefix') format('embedded-opentype'),  url('resource:/fonts/oswald-webfont.woff') format('woff'),  url('resource:/fonts/oswald-webfont.ttf') format('truetype'),  url('resource:/fonts/oswald-webfont.svg#oswaldregular') format('svg');
-	font-weight: normal;
+	src: url('../fonts/oswald-webfont.eot');
+  /*src: url('${resource(dir:'fonts', file:'oswald-webfont.eot')}');*/1
+	src: url('..fonts/oswald-webfont.eot?#iefix') format('embedded-opentype'),  url('../fonts/oswald-webfont.woff') format('woff'),  url('../fonts/oswald-webfont.ttf') format('truetype'),  url('../fonts/oswald-webfont.svg#oswaldregular') format('svg');
+/*  src: url('${resource(dir:'fonts', file:'oswald-webfont.woff')}') format('woff'));*/
+  font-weight: normal;
 	font-style: normal;
 }
 /*------------------------- Layout styles ------------------------*/
@@ -586,7 +588,7 @@ p a:hover {
 	display:block;
 }
 #body.ticket-info div.news a {
-	background:url(resource:/images/interface.png) no-repeat -101px 0;
+	background:url(../images/interface.png) no-repeat -101px 0;
 	display:block;
 	height:24px;
 	margin:0 0 0 20px;
@@ -594,7 +596,7 @@ p a:hover {
 	width:160px;
 }
 #body.ticket-info div.news a:hover {
-	background:url(resource:/images/interface.png) no-repeat -101px -25px;
+	background:url(../images/interface.png) no-repeat -101px -25px;
 }
 #body.rentals {
 	border:1px solid #4F4F4F;
@@ -706,19 +708,19 @@ p a:hover {
 	padding:0 0 0 50px;
 }
 #body.about div div span.address {
-	background:url(resource:/images/icon-address.png) no-repeat left 0;
+	background:url(../images/icon-address.png) no-repeat left 0;
 	height:25px;
 }
 #body.about div div span.phone-num {
-	background:url(resource:/images/icon-phone-num.png) no-repeat left 0;
+	background:url(../images/icon-phone-num.png) no-repeat left 0;
 	height:25px;
 }
 #body.about div div span.fax-num {
-	background:url(resource:/images/icon-fax.png) no-repeat left 0;
+	background:url(../images/icon-fax.png) no-repeat left 0;
 	height:24px;
 }
 #body.about div div span.email {
-	background:url(resource:/images/icon-email.png) no-repeat left 0;
+	background:url(../images/icon-email.png) no-repeat left 0;
 	height:24px;
 }
 #body.about div div form {
@@ -765,7 +767,7 @@ p a:hover {
 	font-size:12px;
 	height:107px;
 	margin:0 9px 0 69px;
-	margin:0 5px 0 69px\9;/* Needed for IE9 and old versions */
+	/*margin:0 5px 0 69px\9;/* Needed for IE9 and old versions */
 	overflow:auto;
 	float:right;
 	padding:5px;
@@ -774,7 +776,7 @@ p a:hover {
 	float:right;
 }
 #body.about div div form input {
-	background:url(resource:/images/interface.png) no-repeat 0 0;
+	background:url(../images/interface.png) no-repeat 0 0;
 	border:0;
 	cursor:pointer;
 	height:23px;
@@ -783,7 +785,7 @@ p a:hover {
 	width:100px;
 }
 #body.about div div form > input:hover {
-	background:url(resource:/images/interface.png) no-repeat 0 -24px;
+	background:url(../images/interface.png) no-repeat 0 -24px;
 }
 #body.blog {
 	border:1px solid #4F4F4F;
@@ -1061,7 +1063,7 @@ p a:hover {
 	width:218px;
 }
 #body.blog-single div:first-child form div input {
-	background:url(resource:/images/interface.png) no-repeat -262px 1px;
+	background:url(../images/interface.png) no-repeat -262px 1px;
 	border:0;
 	clear:both;
 	cursor:pointer;
@@ -1071,7 +1073,7 @@ p a:hover {
 	width:70px;
 }
 #body.blog-single div:first-child form div input:hover {
-	background:url(resource:/images/interface.png) no-repeat -262px -24px;
+	background:url(../images/interface.png) no-repeat -262px -24px;
 }
 #body.blog-single div {
 	float:right;
@@ -1271,7 +1273,7 @@ p a:hover {
 }
 /*------------------------- Footer ---------------------------*/
 #footer {
-	background:url(resource:/images/bg-footer.png) repeat-x left bottom;
+	background:url(../images/bg-footer.png) repeat-x left bottom;
 	clear:both;
 	height:217px;
 	margin:47px 0 0;
@@ -1377,7 +1379,7 @@ p a:hover {
 	background:none #4f4f4f;
 }
 #footer div div form input {
-	background:url(resource:/images/interface.png) no-repeat -262px 1px;
+	background:url(../images/interface.png) no-repeat -262px 1px;
 	border:0;
 	cursor:pointer;
 	float:left;
@@ -1385,7 +1387,7 @@ p a:hover {
 	width:70px;
 }
 #footer div div form input:hover {
-	background:url(resource:/images/interface.png) no-repeat -262px -24px;
+	background:url(../images/interface.png) no-repeat -262px -24px;
 }
 #footer div p {
 	clear:both;
@@ -1417,28 +1419,30 @@ p a:hover {
 	float:left;
 	text-indent:-99999px;
 }
+/*
 #footer div div.connect a#facebook {
-	background:url(resource:/images/icons.png) no-repeat 0 0;
+	background:url(../images/icons.png) no-repeat 0 0;
 	height:17px;
 	width:9px;
 }
 #footer div div.connect a#facebook:hover {
-	background:url(resource:/images/icons.png) no-repeat 0 -90px;
+	background:url(../images/icons.png) no-repeat 0 -90px;
 }
 #footer div div.connect a#twitter {
-	background:url(resource:/images/icons.png) no-repeat 0 -18px;
+	background:url(../images/icons.png) no-repeat 0 -18px;
 	height:17px;
 	margin:0 15px 0 16px;
 	width:18px;
 }
 #footer div div.connect a#twitter:hover {
-	background:url(resource:/images/icons.png) no-repeat 0 -54px;
+	background:url(../images/icons.png) no-repeat 0 -54px;
 }
 #footer div div.connect a#googleplus {
-	background:url(resource:/images/icons.png) no-repeat 0 -36px;
+	background:url(../images/icons.png) no-repeat 0 -36px;
 	height:17px;
 	width:17px;
 }
 #footer div div.connect a#googleplus:hover {
-	background:url(resource:/images/icons.png) no-repeat 0 -72px;
+	background:url(../images/icons.png) no-repeat 0 -72px;
 }
+*/
